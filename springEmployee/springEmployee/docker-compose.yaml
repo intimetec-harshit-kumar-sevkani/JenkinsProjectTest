@@ -1,0 +1,23 @@
+version: '3.8'  # Use the desired Docker Compose version
+
+services:
+  postgres:
+    image: postgres:latest  # You can specify a specific version like "postgres:12" if needed
+    container_name: my_postgres  # Give your container a custom name (optional)
+    environment:
+      POSTGRES_DB: EmployeeDB  # Replace "my_database" with your desired database name
+      POSTGRES_USER: postgres  # Replace "my_user" with your desired username
+      POSTGRES_PASSWORD: HareRama@7  # Replace "my_password" with your desired password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Mount a volume for persistent data storage
+    ports:
+      - "5432:5432"  # Map host port 5432 to container port 5432 for PostgreSQL
+    networks:
+      - my_network  # Connect the container to a custom network (optional)
+
+volumes:
+  postgres_data:  # Define the volume to be used for PostgreSQL data storage
+
+networks:
+  my_network:  # Define a custom network for the container (optional)
+    driver: bridge  # Use the default bridge driver, or choose another driver if needed
