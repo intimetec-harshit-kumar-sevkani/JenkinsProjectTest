@@ -86,7 +86,7 @@ public class EmployeeControllerTests {
                          .contentType(MediaType.APPLICATION_JSON).content(requestBody))
                  .andExpect(status().isCreated())
                  .andDo(print());
-         test.log(Status.PASS, "test_AddEmployee passed");
+         test.log(Status.PASS, "test_AddEmployee passed" + System.getenv("BUILD_NUMBER"));
      }  catch (Exception e) {
          test.log(Status.FAIL, "test_AddEmployee failed");
      }
